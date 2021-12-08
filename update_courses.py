@@ -2,7 +2,7 @@ import httplib2
 from bs4 import BeautifulSoup
 import re
 
-file = open('testing.txt', 'w+')
+file = open('courses.txt', 'w+')
 
 http = httplib2.Http()
 status, response = http.request('https://catalog.ucsd.edu/courses/CSE.html')
