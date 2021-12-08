@@ -19,7 +19,8 @@ prereq_string = 'Prerequisites'
 for i in range (len (course_names)):
     ##### set up the list of course prerequisites #####
     # remove the html tags from each item
-    description = re.sub (tag_remove, '', str (course_descs[i]))
+    course_descs[i] = re.sub (tag_remove, '', str (course_descs[i]))
+    description = course_descs[i]
     
     try:
          # get the index of the word "Prerequisites" in the string
