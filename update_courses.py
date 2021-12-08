@@ -2,61 +2,40 @@ import httplib2
 from bs4 import BeautifulSoup
 import re
 
-file = open ('testing.txt', 'w+')
+file = open('testing.txt', 'w+')
 
-http = httplib2.Http ()
-status, response = http.request ('https://catalog.ucsd.edu/courses/CSE.html')
+http = httplib2.Http()
+status, response = http.request('https://catalog.ucsd.edu/courses/CSE.html')
 
-soup = BeautifulSoup (response, 'html.parser')
-tag_remove = re.compile ('<.*?>')
-credit_remove = re.compile ('\(.*?\)')
+soup = BeautifulSoup(response, 'html.parser')
+remover = re.compile('<.*?>|\(.*?\)')
+prereq_string = 'Prerequisites: '
 
-course_names = soup (class_='course-name')
-course_descs = soup (class_='course-descriptions')
-course_prereqs = []
-prereq_string = 'Prerequisites'
+course_names = soup(class_='course-name')
+course_descs = soup(class_='course-descriptions')
 
-for i in range (len (course_names)):
-    ##### set up the list of course prerequisites #####
-    # remove the html tags from each item
-    course_descs[i] = re.sub (tag_remove, '', str (course_descs[i]))
+descriptions = []
+course_dict = {}
+
+for i in range(len(course_names)):
+    course_descs[i] = re.sub(remover, '', str(course_descs[i]))
     description = course_descs[i]
     
-    try:
-         # get the index of the word "Prerequisites" in the string
-        prereq_index = description.index (prereq_string)
-        for_prereq = prereq_index + len (prereq_string) + 1
-        
-        # get the rest of the string, strip any extra spaces
-        prereq = description[for_prereq:].strip ()
-        # modify description to get rid of the prereq part of it
-        course_descs[i] = description[:prereq_index].strip ()
-        # capitalize the first letter
-        prereq = prereq[0:1].capitalize () + prereq[1:]
-        
-        # if there was no prereq for this course just go to the except case
-        if prereq == 'None.':
-            raise ValueError
-        
-        # append it to the list
-        course_prereqs.append (prereq)
-    except ValueError:
-        # we'll just say "No prerequisites"
-        course_prereqs.append ('No ' + prereq_string.lower ())
+    temp = course_descs[i].split(prereq_string)
     
-    ##### set up the list of course names #####
-    # remove the html tags from each name
-    name = re.sub (tag_remove, '', str (course_names[i]))
-    # remove the number of credits
-    name = re.sub (credit_remove, '', name)
-    # trim the string and reset the index
-    course_names[i] = name.strip ()
+    if len(temp) == 1:
+        descriptions.append([course_descs[i].strip(), "No Prerequisites."])
+    else:
+        temp[1] = temp[1][0:1].capitalize() + temp[1][1:]
+        descriptions.append([temp[0].strip(), temp[1].strip()])
     
-    file.write (str (course_names[i]))
-    file.write ('\n')
-    file.write (str (course_descs[i]))
-    file.write ('\n')
-    file.write (str (course_prereqs[i]))
-    file.write ('\n')
+    temp = re.sub(remover, '', str(course_names[i])).strip().split(". ")
+    
+    course_dict[temp[0]] = descriptions[i]
+    course_dict[temp[1]] = descriptions[i]
+    
+    name = temp[0] + " = " + temp[1]
+    desc = descriptions[i][0] + " Prerequisites: " + descriptions[i][1]
+    file.write (name + "\n" + desc + "\n")
 
-file.close ()
+file.close()
