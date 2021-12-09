@@ -238,7 +238,7 @@ CSE 240B = Parallel Computer Architecture
 This course covers advanced topics in parallel computer architecture, including on-chip and off-chip interconnection networks, cache coherence, cache consistency, hardware multithreading, multi-core and tiled architectures. It incorporates the latest research and development on parallel architectures and compilation techniques for those architectures. CSE 240A recommended. Prerequisites: Graduate standing.
 CSE 240C = Advanced Microarchitecture
 This course covers advanced topics in computer architecture. It incorporates the latest research and development on topics such as branch prediction, instruction-level parallelism, cache hierarchy design, speculative multithreading, reliable architectures, and power-management techniques. CSE 240A recommended. Prerequisites: Graduate standing.
-CSE 241A/ECE 260B = VLSI Integration of Computing Circuitry
+CSE 241A = ECE 260B = VLSI Integration of Computing Circuitry
 VLSI integrated-circuit building blocks of computing systems, and their implementation. Computer-aided design and performance simulations, design exercises and projects. Devices, standard cells and interconnects, clocking, power/ground distribution, arithmetic modules, memories. Methodologies and tradeoffs in system implementation. Prerequisites: Layout  and logic design , or consent of instructor.
 CSE 243A = Introduction to Synthesis Methodologies in VLSI CAD
 Hardware software codesign, architectural level synthesis, control synthesis and optimization, scheduling, binding, register and bus sharing, interconnect design, module selection, combinational logic optimization, state minimization, state encoding, and retiming. Prerequisites: None.
@@ -272,7 +272,7 @@ CSE 254 = Statistical Learning
 Learning algorithms based on statistics. Possible topics include minimum-variance unbiased estimators, maximum likelihood estimation, likelihood ratio tests, resampling methods, linear logistic regression, feature selection, regularization, dimensionality reduction, manifold detection. An upper-division undergraduate course on probability and statistics such as MATH 183 or 186, or any graduate course on statistics, pattern recognition, or machine learning is recommended. Prerequisites: Graduate standing.
 CSE 255 = Data Mining and Predictive Analytics
 Learning methods for applications. Content may include data preparation, regression and classification algorithms, support vector machines, random forests, class imbalance, overfitting, decision theory, recommender systems and collaborative filtering, text mining, analyzing social networks and social media, protecting privacy, A/B testing. Recommended preparation: CSE 103 or similar. Prerequisites: Graduate standing or consent of instructor.
-CSE 256/LING 256 = Statistical Natural Language Processing
+CSE 256 = LING 256 = Statistical Natural Language Processing
 An introduction to modern statistical approaches to natural language processing: part of speech tagging, word sense disambiguation and parsing, using Markov models, hidden Markov models, and probabilistic context-free grammars. Recommended preparation: LIGN 165, LIGN 245, CSE 151, CSE 250A, or CSE 254. Prerequisites: Graduate standing or consent of instructor.
 CSE 257 = Search and Optimization
 The course will cover core algorithms for sequential decision-making problems in autonomous systems. Topics include heuristic search, Monte Carlo search, deep reinforcement learning, nonlinear optimization, mixed-integer optimization, and stochastic optimization. Prerequisites: Graduate standing or consent of instructor.
@@ -302,9 +302,9 @@ CSE 276E = Robot Systems Design and Implementation
 End to end system design of embedded electronic systems including PCB design and fabrication, software control system development, and system integration. Program or materials fees may apply. May be coscheduled with CSE 176E. Prerequisites: Instructor approval required to ensure sufficient programming and project experience to be successful in the course.
 CSE 280A = Algorithms in Computational Biology
 The course focuses on algorithmic aspects of modern bioinformatics and covers the following topics: computational gene hunting, sequencing, DNA arrays, sequence comparison, pattern discovery in DNA, genome rearrangements, molecular evolution, computational proteomics, and others. Prerequisites: CSE 202 preferred or consent of instructor.
-CSE 282/BENG 202 = Bioinformatics II: Sequence and Structure Analysis—Methods and Applications
+CSE 282 = BENG 202 = Bioinformatics II: Sequence and Structure Analysis—Methods and Applications
 Introduction to methods for sequence analysis. Applications to genome and proteome sequences. Protein structure, sequence-structure analysis. Prerequisites: Pharm 201 or consent of instructor.
-CSE 283/BENG 203 = Bioinformatics III: Functional Genomics
+CSE 283 = BENG 203 = Bioinformatics III: Functional Genomics
 Annotating genomes, characterizing functional genes, profiling, reconstructing pathways. Prerequisites: Pharm 201, BENG 202/CSE 282, or consent of instructor.
 CSE 284 = Personal Genomics for Bioinformaticians
 This course provides an introduction to bioinformatics techniques for analyzing and interpreting human genomes. Topics covered include an introduction to medical and population genetics, ancestry, finding and interpreting disease-causing variants, genome-wide association studies, genetic risk prediction, analyzing next-generation sequencing data, how to scale current genomics techniques to analyze hundreds of thousands of genomes, and the social impact of the personal genomics revolution. Programming experience, familiarity with the UNIX command line, and a basic course in probability and statistics are strongly recommended. Students may not receive credit for CSE 284 and CSE 291  taught winter 2017 with the same subtitle. Prerequisites: Graduate standing.

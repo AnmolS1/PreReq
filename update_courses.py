@@ -15,7 +15,6 @@ course_names = soup(class_='course-name')
 course_descs = soup(class_='course-descriptions')
 
 descriptions = []
-course_dict = {}
 
 for i in range(len(course_names)):
     course_descs[i] = re.sub(remover, '', str(course_descs[i]))
@@ -31,10 +30,8 @@ for i in range(len(course_names)):
     
     temp = re.sub(remover, '', str(course_names[i])).strip().split(". ")
     
-    course_dict[temp[0]] = descriptions[i]
-    course_dict[temp[1]] = descriptions[i]
+    name = temp[0].replace("/", " = ") + " = " + temp[1]
     
-    name = temp[0] + " = " + temp[1]
     desc = descriptions[i][0] + " Prerequisites: " + descriptions[i][1]
     file.write (name + "\n" + desc + "\n")
 
