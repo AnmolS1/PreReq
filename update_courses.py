@@ -24,7 +24,7 @@ for i in range(len(course_names)):
     temp = course_descs[i].split(prereq_string)
     
     if len(temp) == 1:
-        descriptions.append([course_descs[i].strip(), "No Prerequisites."])
+        descriptions.append([course_descs[i].strip(), "None."])
     else:
         temp[1] = temp[1][0:1].capitalize() + temp[1][1:]
         descriptions.append([temp[0].strip(), temp[1].strip()])

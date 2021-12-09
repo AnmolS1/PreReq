@@ -27,7 +27,7 @@ Helps the Java programmer to be productive in the C++ programming environment. T
 CSE 87 = First-year Student Seminar
 The First-year Student Seminar Program is designed to provide new students with the opportunity to explore an intellectual topic with a faculty member in a small seminar setting. First-year student seminars are offered in all campus departments and undergraduate colleges, and topics vary from quarter to quarter. Enrollment is limited to fifteen to twenty students, with preference given to entering first-year students. Prerequisites: None.
 CSE 90 = Undergraduate Seminar
-A seminar providing an overview of a topic of current research interest to the instructor. The goal is to present a specialized topic in computer science and engineering students. May be taken for credit three times when topics vary. Prerequisites: No Prerequisites.
+A seminar providing an overview of a topic of current research interest to the instructor. The goal is to present a specialized topic in computer science and engineering students. May be taken for credit three times when topics vary. Prerequisites: None.
 CSE 91 = Perspectives in Computer Science and Engineering
 A seminar format discussion led by CSE faculty on topics in central areas of computer science, concentrating on the relation among them, recent developments, and future directions. Prerequisites: Majors only.
 CSE 99 = Independent Study in Computer Science and Engineering
@@ -287,7 +287,7 @@ This course provides an overview of parallel hardware, algorithms, models, and s
 CSE 262 = System Support for Applications of Parallel Computation
 This course will explore design of software support for applications of parallel computation. Topics include programming languages, run time support, portability, and load balancing. The course will terminate in a project. Prerequisites: Consent of instructor.
 CSE 272 = Advanced Image Synthesis
-Computer graphics techniques for creating realistic images. Topics include ray tracing, global illumination, subsurface scattering, and participating media. CSE 168 or equivalent recommended. Prerequisites: No Prerequisites.
+Computer graphics techniques for creating realistic images. Topics include ray tracing, global illumination, subsurface scattering, and participating media. CSE 168 or equivalent recommended. Prerequisites: None.
 CSE 274 = Selected Topics in Graphics
 Selected topics in computer graphics, with an emphasis on recent developments. Possible topics include computer animation, shape modeling and analysis, image synthesis, appearance modeling, and real-time rendering. CSE 168 or CSE 169 recommended. Prerequisites: Graduate standing or consent of instructor.
 CSE 276A = Introduction to Robotics
