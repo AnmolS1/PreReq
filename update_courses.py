@@ -26,12 +26,10 @@ course_descs = soup(class_='course-descriptions')
 
 # loop through everything
 for i in range(len(course_names)):
-    # append to this string and then write it to the file
-    to_write = ''
-
-    # remove tags/credits from course names. also if the course name has more
-    # than one name (i.e. 'CSE 282/BENG 202') then replace the slash and the
-    # period separator with the equal sign before split
+    # step 1: remove tags/credits from the course name
+    # step 2: replace '. ' and '/' with ' = '
+    # step 3: split by ' = '
+    # making it a one liner because i can.
     names = re.sub(replacer, ' = ', re.sub(remover, '', str(course_names[i]))).split(' = ')
 
     # get the description and remove any tags we don't wanna see
@@ -50,6 +48,7 @@ for i in range(len(course_names)):
         desc[1] = desc[1][0:1].capitalize() + desc[1][1:]
 
     # write to the file :)
+    to_write = ''
     for n in range(len(names)):
         to_write += '\t{\n'
         to_write += '\t\t"name": "' +  names[n].strip() + '",\n'
