@@ -4,7 +4,8 @@ from bs4 import BeautifulSoup # get specific pieces of the html
 import re                     # regex to make our job easier
 
 # open the file we're writing to with read and write privileges
-file = open('courses.txt', 'w+')
+file = open('courses.json', 'w+')
+file.write('[\n')
 
 # get the html from the website as a tuple
 # first value is website status, second is the response as a string
@@ -16,6 +17,7 @@ status, response = http.request('https://catalog.ucsd.edu/courses/CSE.html')
 # and "Prerequisites: " to make our code easier to read
 soup = BeautifulSoup(response, 'html.parser')
 remover = re.compile('<.*?>|\(.*?\)')
+replacer = re.compile('\/|(\. )')
 prereq_string = 'Prerequisites: '
 
 # get all the course names and descriptions
@@ -24,29 +26,41 @@ course_descs = soup(class_='course-descriptions')
 
 # loop through everything
 for i in range(len(course_names)):
+    # append to this string and then write it to the file
+    to_write = ''
+
+    # remove tags/credits from course names. also if the course name has more
+    # than one name (i.e. 'CSE 282/BENG 202') then replace the slash and the
+    # period separator with the equal sign before split
+    names = re.sub(replacer, ' = ', re.sub(remover, '', str(course_names[i]))).split(' = ')
+
     # get the description and remove any tags we don't wanna see
     course_descs[i] = re.sub(remover, '', str(course_descs[i]))
-    
     # split by 'Prerequisites: '
     desc = course_descs[i].split(prereq_string)
-    
+
     # if the 'Prerequisites: ' string isn't there then put it in because
     # that'll make the javascript parsing of the file easier for us
     # otherwise capitalize the first word of the prerequisites and smush
     # them back together
+    desc[0] = desc[0].strip()
     if len(desc) == 1:
-        desc = desc[0].strip() + ' ' + prereq_string + 'None.'
+        desc.append('None.')
     else:
         desc[1] = desc[1][0:1].capitalize() + desc[1][1:]
-        desc = desc[0].strip() + ' ' + prereq_string + desc[1].strip()
-    
-    # remove tags/credits from course names. also if the course name has more
-    # than one name (i.e. 'CSE 282/BENG 202') then replace the slash with
-    # the equal sign, again makes the javscript much simpler
-    name = re.sub(remover, '', str(course_names[i])).strip().split(". ")
-    name = name[0].replace("/", " = ") + " = " + name[1]
-    
-    # write to the file :)
-    file.write (name + "\n" + desc + "\n")
 
+    # write to the file :)
+    for n in range(len(names)):
+        to_write += '\t{\n'
+        to_write += '\t\t"name": "' +  names[n].strip() + '",\n'
+        to_write += '\t\t"description": "' + desc[0].strip() + '",\n'
+        to_write += '\t\t"prerequisite": "' + desc[1].strip() + '"\n'
+        to_write += '\t}'
+        if not (i == len(course_names) - 1 and n == len(names) - 1):
+            to_write += ','
+        to_write += '\n'
+
+    file.write(to_write)
+
+file.write(']')
 file.close()
