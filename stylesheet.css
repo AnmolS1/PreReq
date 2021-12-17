@@ -1,0 +1,71 @@
+:root {
+	--transition-1: all 0.3s ease-in-out;
+	--transition-2: all 0.2s ease-in-out;
+}
+
+#spacer {
+    height: 25vh;
+}
+
+html {
+	font-size: 1rem;
+	font-family: "PT Sans", sans-serif;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+header {
+	text-align: center;
+	-ms-user-select: none;
+	    user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-webkit-touch-callout: none;
+}
+
+.no_result {
+	margin: 0.3rem;
+	padding: 0.3rem 0.5rem;
+	list-style: none;
+	text-align: left;
+	font-size: 1rem;
+	color: #212121;
+	transition: all 0.1s ease-in-out;
+	border-radius: 0.35rem;
+	background-color: rgba(255, 255, 255, 1);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	transition: all 0.2s ease;
+	outline: none;
+}
+
+h1 {
+	color: #182B49;
+	transition: var(--transition-1);
+}
+
+.selection {
+	margin-top: 25vh;
+	font-size: 2rem;
+	font-weight: bold;
+	color: #182B49;
+	transition: var(--transition-1);
+}
+
+.selection::-moz-selection {
+	color: #C69214;
+}
+
+.selection::selection {
+	color: #C69214;
+}
+
+@media only screen and (max-width: 600px) {
+	.selection {
+		margin-top: 15vh;
+	}
+}
