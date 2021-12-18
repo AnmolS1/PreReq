@@ -1,4 +1,3 @@
-// The autoComplete.js Engine instance creator
 const autoCompleteJS = new autoComplete({
 	data: {
 		src: async () => {
@@ -8,10 +7,10 @@ const autoCompleteJS = new autoComplete({
 					.getElementById("autoComplete")
 					.setAttribute("placeholder", "Loading...");
 				// Fetch External Data Source
-                const source = await fetch(
-                    "https://anmols1.github.io/PreReq/courses.json"
-                );
-                const data = await source.json();
+				const source = await fetch(
+					"https://anmols1.github.io/PreReq/courses.json"
+				);
+				const data = await source.json();
 				// Post Loading placeholder text
 				document
 					.getElementById("autoComplete")
@@ -25,8 +24,7 @@ const autoCompleteJS = new autoComplete({
 		keys: ["name", "description"],
 		cache: true,
 		filter: (list) => {
-			// Filter duplicates
-			// incase of multiple data keys usage
+			// Filter duplicates in case of multiple data keys usage
 			const filteredResults = Array.from(
 				new Set(list.map((value) => value.match))
 			).map((food) => {
@@ -57,12 +55,13 @@ const autoCompleteJS = new autoComplete({
 			item.style = "display: flex; justify-content: space-between;";
 			// Modify Results Item Content
 			item.innerHTML = `
-      <span style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
-        ${data.match}
-      </span>
-      <span style="display: flex; align-items: center; font-size: 13px; font-weight: 100; text-transform: uppercase; color: rgba(0,0,0,.2);">
-        ${data.key}
-      </span>`;
+                <span style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
+                    ${data.match}
+                </span>
+                <span style="display: flex; align-items: center; font-size: 13px; font-weight: 100; text-transform: uppercase; color: rgba(0,0,0,.2);">
+                    ${data.key}
+                </span>
+            `;
 		},
 		highlight: true
 	},
@@ -79,13 +78,9 @@ autoCompleteJS.input.addEventListener("selection", function (event) {
 	const feedback = event.detail;
 	autoCompleteJS.input.blur();
 	// Prepare User's Selected Value
-	const selection = feedback.selection.value[feedback.selection.key];
+	const selection = feedback.selection.value["prerequisites"];
 	// Render selected choice to selection div
 	document.querySelector(".selection").innerHTML = selection;
-	// Replace Input value with the selected value
-	autoCompleteJS.input.value = selection;
-	// Console log autoComplete data feedback
-	console.log(feedback);
 });
 
 // Blur/unBlur page elements
