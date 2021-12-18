@@ -5,7 +5,7 @@ import re                     # regex to make our job easier
 
 # open the file we're writing to with read and write privileges
 file = open('courses.json', 'w+')
-file.write('[\n')
+file.write('[')
 
 # get the html from the website as a tuple
 # first value is website status, second is the response as a string
@@ -50,16 +50,12 @@ for i in range(len(course_names)):
     # write to the file :)
     to_write = ''
     for n in range(len(names)):
-        to_write += '\t{\n'
-        to_write += '\t\t"name": "' +  names[n].strip() + '",\n'
+        to_write += '\n\t{\n\t\t"name": "' +  names[n].strip() + '",\n'
         to_write += '\t\t"description": "' + desc[0].strip() + '",\n'
-        to_write += '\t\t"prerequisites": "' + desc[1].strip() + '"\n'
-        to_write += '\t}'
-        if not (i == len(course_names) - 1 and n == len(names) - 1):
-            to_write += ','
-        to_write += '\n'
+        to_write += '\t\t"prerequisites": "' + desc[1].strip() + '"\n\t}'
+        to_write += ',' if i != len(course_names) - 1 or n != len(names) - 1 else ''
 
     file.write(to_write)
 
-file.write(']')
+file.write('\n]')
 file.close()
