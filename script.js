@@ -8,17 +8,10 @@ const autoCompleteJS = new autoComplete({
 					.getElementById("autoComplete")
 					.setAttribute("placeholder", "Loading...");
 				// Fetch External Data Source
-				const source = await fetch(
-                    "https://anmols1.github.io/PreReq/main/courses.json"//, {
-                        //method: "GET",
-                        //mode: 'cors',
-                        //headers: {
-                        //    'Content-Type': 'application/json'
-                        //},
-                        //body: JSON.stringify(body)
-                    //}
+                const source = await fetch(
+                    "https://anmols1.github.io/PreReq/courses.json"
                 );
-				const data = await source.json();
+                const data = await source.json();
 				// Post Loading placeholder text
 				document
 					.getElementById("autoComplete")
@@ -29,7 +22,7 @@ const autoCompleteJS = new autoComplete({
 				return error;
 			}
 		},
-		keys: ["food", "cities", "animals"],
+		keys: ["name", "description"],
 		cache: true,
 		filter: (list) => {
 			// Filter duplicates
@@ -43,7 +36,7 @@ const autoCompleteJS = new autoComplete({
 			return filteredResults;
 		}
 	},
-	placeHolder: "Search for Food & Drinks!",
+	placeHolder: "Search for a course!",
 	resultsList: {
 		element: (list, data) => {
 			const info = document.createElement("p");
