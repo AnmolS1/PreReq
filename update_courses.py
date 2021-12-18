@@ -53,7 +53,7 @@ for i in range(len(course_names)):
         to_write += '\t{\n'
         to_write += '\t\t"name": "' +  names[n].strip() + '",\n'
         to_write += '\t\t"description": "' + desc[0].strip() + '",\n'
-        to_write += '\t\t"prerequisite": "' + desc[1].strip() + '"\n'
+        to_write += '\t\t"prerequisites": "' + desc[1].strip() + '"\n'
         to_write += '\t}'
         if not (i == len(course_names) - 1 and n == len(names) - 1):
             to_write += ','
