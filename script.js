@@ -62,6 +62,7 @@ autoCompleteJS.input.addEventListener("selection", function (event) {
 	autoCompleteJS.input.blur();
 	const selection = feedback.selection.value["prerequisites"];
 	document.querySelector(".selection").innerHTML = selection;
+	autoCompleteJS.input.value = feedback.selection.value[feedback.selection.key];
 });
 
 const action = (action) => {
